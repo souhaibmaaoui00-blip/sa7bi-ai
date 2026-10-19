@@ -1,0 +1,65 @@
+
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#101114">
+<title>Sa7bi AI</title>
+<style>
+*{box-sizing:border-box}
+body{margin:0;background:#101114;color:#f5f5f7;font-family:Arial,sans-serif}
+header{padding:22px 18px;border-bottom:1px solid #333}
+h1{margin:0;color:#a99bff}
+header p{color:#aaa;font-size:14px}
+main{max-width:700px;margin:35px auto;padding:15px}
+.welcome{text-align:center;margin:60px 0 30px}
+.welcome h2{font-size:28px}
+.welcome p{color:#aaa;line-height:1.8}
+#chat{display:flex;flex-direction:column;gap:14px}
+.msg{padding:14px;border-radius:14px;line-height:1.7;white-space:pre-wrap;overflow-wrap:anywhere}
+.user{background:#29263c;align-self:flex-start;max-width:90%}
+.bot{background:#1d1e25;border:1px solid #333}
+.composer{display:flex;gap:8px;margin-top:20px}
+textarea{flex:1;min-width:0;resize:vertical;background:#202127;color:white;border:1px solid #444;border-radius:14px;padding:14px;font-size:16px}
+button{background:#a99bff;color:#14121e;border:0;border-radius:12px;padding:13px;font-weight:bold;font-size:15px}
+.note{font-size:12px;color:#999;line-height:1.7}
+</style>
+</head>
+<body>
+<header>
+<h1>✦ Sa7bi AI</h1>
+<p>مساعدك الشخصي للبرمجة والتعلّم</p>
+</header>
+<main>
+<div class="welcome" id="welcome">
+<h2>أهلا بيك 👋</h2>
+<p>أنا مساعدك الذكي. اكتب سؤالك ونعاونك في البرمجة وإنشاء المواقع.</p>
+</div>
+<div id="chat"></div>
+<div class="composer">
+<textarea id="question" rows="2" placeholder="اكتب سؤالك هنا..."></textarea>
+<button id="send">إرسال ↑</button>
+</div>
+<p class="note">هذه واجهة أولية. يلزم ربطها بخادم ذكاء اصطناعي لتوليد إجابات حقيقية.</p>
+</main>
+<script>
+const chat=document.getElementById("chat");
+const input=document.getElementById("question");
+document.getElementById("send").addEventListener("click",()=>{
+const text=input.value.trim();
+if(!text)return;
+document.getElementById("welcome").style.display="none";
+const user=document.createElement("div");
+user.className="msg user";
+user.textContent=text;
+chat.appendChild(user);
+const bot=document.createElement("div");
+bot.className="msg bot";
+bot.textContent="وصلني سؤالك! هذه النسخة ما زالت تحتاج ربط نموذج ذكاء اصطناعي بالخادم حتى أتمكن من الإجابة. الخطوة التالية هي تفعيل الذكاء الاصطناعي.";
+chat.appendChild(bot);
+input.value="";
+});
+</script>
+</body>
+</html>
